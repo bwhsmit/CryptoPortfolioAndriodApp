@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "60668239255",
+    "firebase_url": "https://bramsmit-pset6.firebaseio.com",
+    "project_id": "bramsmit-pset6",
+    "storage_bucket": "bramsmit-pset6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60668239255:android:c632e9f117fb8417",
+        "android_client_info": {
+          "package_name": "com.example.bwhsm.bramsmit_pset6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60668239255-hei36b0g0tghcrf3kcvtkkm82tpv1md8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bwhsm.bramsmit_pset6",
+            "certificate_hash": "e196a9d810e7c62b4004f8f1e7e3d2502b010cba"
+          }
+        },
+        {
+          "client_id": "60668239255-obk0b2vd6ifggu98gtnn9cjivh70t4j9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpO3xb5FI5Fy_JHsz4gASrRuehqmK2lm4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60668239255-obk0b2vd6ifggu98gtnn9cjivh70t4j9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

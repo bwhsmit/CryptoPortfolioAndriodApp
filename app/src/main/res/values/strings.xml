@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BramSmit-pset6</string>
+    <string name="auth_failed">Authentication failed</string>
+</resources>
