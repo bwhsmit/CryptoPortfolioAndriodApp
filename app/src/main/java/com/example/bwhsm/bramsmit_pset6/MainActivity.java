@@ -1,10 +1,14 @@
 package com.example.bwhsm.bramsmit_pset6;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Coin> coinData = new ArrayList<Coin>();
 
-    String email;
-    String password;
+//    String email;
+//    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        email = "test@test.com";
-        password = "password123";
+//        email = "test@test.com";
+//        password = "password123";
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -64,19 +68,13 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // User is signed out
                     Log.d("singed out", "onAuthStateChanged:signed_out");
+                    goToLogin();
                 }
                 // ...
             }
         };
 
 //        createUser();
-
-        findViewById(R.id.logInButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logIn();
-            }
-        });
 
         findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,26 +94,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addListeners() {
-        findViewById(R.id.logInButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logIn();
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.app_bar_menu, menu);
+        return true;
+    }
 
-        findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {                addToDb();
-            }
-        });
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_logout) {
+            mAuth.getInstance().signOut();
+            goToLogin();
+        }
+        return true;
+    }
 
-        findViewById(R.id.getButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFromDb();
-            }
-        });
+    private void goToLogin() {
+        Intent loginIntent = new Intent(this,LoginActivity.class);
+        this.startActivity(loginIntent);
+        finish();
     }
 
     @Override
@@ -129,60 +127,9 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
-            mAuth.getInstance().signOut();
+//            mAuth.getInstance().signOut();
         }
 
-    }
-
-
-    public void createUser() {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("create user", "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Toast.makeText(MainActivity.this, "created user: " + email,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                        // ...
-                    }
-                });
-    }
-
-    public void logIn() {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(MainActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Toast.makeText(MainActivity.this, "logged in user: " + email,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        // ...
-
-
-                    }
-                });
     }
 
     private void addToDb() {

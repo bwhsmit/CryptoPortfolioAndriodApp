@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">BramSmit-pset6</string>
+    <string name="app_name">Portfolio</string>
     <string name="auth_failed">Authentication failed</string>
+    <string name="action_logout">Log Out</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+
 </resources>
