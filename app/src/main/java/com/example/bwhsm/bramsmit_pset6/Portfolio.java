@@ -10,22 +10,23 @@ import java.util.Map;
  */
 
 public class Portfolio {
-    private Map<String,Float> coins;
-    private int totalValue;
+    private Map<String,Double> coins;
+    private double totalValue;
+
 
     public Portfolio() {
-        coins = new HashMap<String,Float>();
+        coins = new HashMap<String,Double>();
     }
 
-    public Portfolio(Map<String, Float> coins) {
+    public Portfolio(Map<String, Double> coins) {
         this.coins = coins;
     }
 
-    public Float getAmount(String coinId) {
+    public Double getAmount(String coinId) {
         return coins.get(coinId);
     }
 
-    public void addCoin(String coinId, Float amount) {
+    public void addCoin(String coinId, Double amount) {
         coins.put(coinId,amount);
     }
 
@@ -33,15 +34,15 @@ public class Portfolio {
         coins.remove(coinId);
     }
 
-    public void addAmount(String coinId, Float amount) {
+    public void addAmount(String coinId, Double amount) {
         coins.put(coinId, coins.get(coinId) + amount);
     }
 
-    public void setCoins(Map<String, Float> coins) {
+    public void setCoins(Map<String, Double> coins) {
         this.coins = coins;
     }
 
-    public Map<String, Float> getCoins() {
+    public Map<String, Double> getCoins() {
         return coins;
     }
 
@@ -50,11 +51,15 @@ public class Portfolio {
         return coinList;
     }
     // TODO setCoinList function to prevent warnings from Firebase
-    public int getTotalValue() {
+    public double getTotalValue() {
         return totalValue;
     }
 
-    public void setTotalValue(int totalValue) {
+    public void setTotalValue(double totalValue) {
         this.totalValue = totalValue;
+    }
+
+    public boolean isEmpty() {
+        return coins.isEmpty();
     }
 }

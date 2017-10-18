@@ -15,6 +15,7 @@ public class Coin {
     private double percentChange_1h;
     private double percentChange_24h;
     private double percentChange_7d;
+    private double amount;
 
     public Coin() {}
 
@@ -112,4 +113,18 @@ public class Coin {
     public void setPercentChange_7d(float percentChange_7d) {
         this.percentChange_7d = percentChange_7d;
     }
+
+    public double getAmount(){
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public double getHoldingValue() {
+        double value = priceUSD * amount;
+        return value;
+    }
+
 }
