@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by bwhsm on 17-10-2017.
+ * Portfolio Class. Each User has a unique portfolio which contains all it's most recent data.
+ * This object will be stored in Firebase's realtimedatabase
  */
 
 public class Portfolio {
