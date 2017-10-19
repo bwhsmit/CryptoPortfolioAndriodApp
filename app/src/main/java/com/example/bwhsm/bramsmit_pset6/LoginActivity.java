@@ -1,5 +1,13 @@
 package com.example.bwhsm.bramsmit_pset6;
 
+/**
+ * Created by bwhsm on 19-9-2017.
+ *
+ * This Login activity handles the user login process
+ *
+ */
+
+
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -47,7 +55,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = emailText.getText().toString();
                 password = passwordText.getText().toString();
-                logIn();
+                if (TextUtils.isEmpty(email)) {
+                    emailText.setError("You must enter a valid email address");
+                }
+                else if (TextUtils.isEmpty(password)) {
+                    passwordText.setError("You must enter a password");
+                }
+                else {
+                    logIn();
+                }
             }
         });
 

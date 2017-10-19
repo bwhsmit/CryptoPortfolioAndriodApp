@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 /**
  * Created by bwhsm on 18-10-2017.
+ *
+ * CustomAdapter which customizes the listView that displays the user's portfolio
  */
 
 public class CustomAdapter extends ArrayAdapter<Coin> {
@@ -36,23 +38,21 @@ public class CustomAdapter extends ArrayAdapter<Coin> {
 
         final Coin coin = getItem(position);
 
-        ImageView coinLogo = (ImageView) customView.findViewById(R.id.coinLogo);
         TextView tvSymbol = (TextView) customView.findViewById(R.id.tvSymbol);
         TextView tvHoldingValue = (TextView) customView.findViewById(R.id.tvHoldingValue);
         TextView tvHoldingAmount = (TextView) customView.findViewById(R.id.tvHoldingAmount);
         TextView tvPrice = (TextView) customView.findViewById(R.id.tvPrice);
 
-        // TODO initialize row elements
 
-        // TODO add coinLogo
         double amount = coin.getAmount();
         double price = coin.getPriceUSD();
         double holdingValue = amount * price;
 
         tvSymbol.setText(coin.getSymbol());
+        // Format the values to display them correctly as ##.##
         tvHoldingValue.setText("$" + new DecimalFormat("##.##").format(holdingValue));
         tvHoldingAmount.setText(Double.toString(amount));
-        tvPrice.setText("$" + Double.toString(price));
+        tvPrice.setText("$" + new DecimalFormat("##.##").format(price));
 
         return customView;
     }

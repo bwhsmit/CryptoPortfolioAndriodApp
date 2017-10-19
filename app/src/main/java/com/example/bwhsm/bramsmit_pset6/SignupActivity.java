@@ -1,5 +1,12 @@
 package com.example.bwhsm.bramsmit_pset6;
 
+/**
+ * Created by bwhsm on 19-9-2017.
+ *
+ * This Signup activity handles the user sign up process
+ *
+ */
+
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;

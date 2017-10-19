@@ -2,6 +2,9 @@ package com.example.bwhsm.bramsmit_pset6;
 
 /**
  * Created by bwhsm on 17-10-2017.
+ *
+ * The Coin class stores all data received from the CoinMarketCap API and the
+ * amount the user currently possesses
  */
 
 public class Coin {
@@ -34,6 +37,11 @@ public class Coin {
         this.percentChange_7d = percentChange_7d;
     }
 
+    public Coin(String id, Double amount) {
+        this.id = id;
+        this.amount = amount;
+    }
+
     public String getId() {
         return id;
     }
@@ -54,64 +62,8 @@ public class Coin {
         return symbol;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
     public double getPriceUSD() {
         return priceUSD;
-    }
-
-    public void setPriceUSD(float priceUSD) {
-        this.priceUSD = priceUSD;
-    }
-
-    public double getPriceBTC() {
-        return priceBTC;
-    }
-
-    public void setPriceBTC(float priceBTC) {
-        this.priceBTC = priceBTC;
-    }
-
-    public double getMarketCapUSD() {
-        return marketCapUSD;
-    }
-
-    public void setMarketCapUSD(float marketCapUSD) {
-        this.marketCapUSD = marketCapUSD;
-    }
-
-    public double getPercentChange_1h() {
-        return percentChange_1h;
-    }
-
-    public void setPercentChange_1h(float percentChange_1h) {
-        this.percentChange_1h = percentChange_1h;
-    }
-
-    public double getPercentChange_24h() {
-        return percentChange_24h;
-    }
-
-    public void setPercentChange_24h(float percentChange_24h) {
-        this.percentChange_24h = percentChange_24h;
-    }
-
-    public double getPercentChange_7d() {
-        return percentChange_7d;
-    }
-
-    public void setPercentChange_7d(float percentChange_7d) {
-        this.percentChange_7d = percentChange_7d;
     }
 
     public double getAmount(){
@@ -122,6 +74,7 @@ public class Coin {
         this.amount = amount;
     }
 
+    // Returns the user's total holding value
     public double getHoldingValue() {
         double value = priceUSD * amount;
         return value;
